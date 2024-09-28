@@ -7,7 +7,7 @@ export class AppController {
 
   @Get()
   getHello(): string {
-    // Testing github actions again.
+    // testing ci/cd pipeline
     return this.appService.getHello();
   }
 }
