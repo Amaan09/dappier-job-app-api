@@ -19,6 +19,6 @@ jobs:
       run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
       
     - name: Build the Docker image
-      run: docker build -t Amaan09/dappier-job-app-api .
+      run: docker build -t amaan1609/dappier-job-app-api .
     - name: Push to Dockerhub
-      run: docker push Amaan09/dappier-job-app-api:latest
+      run: docker push amaan1609/dappier-job-app-api:latest
