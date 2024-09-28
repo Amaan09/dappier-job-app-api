@@ -21,4 +21,4 @@ jobs:
     - name: Build the Docker image
       run: docker build -t Amaan09/dappier-job-app-api .
     - name: Push to Dockerhub
-      run: docker push Amaan09/cdappier-job-app-api:latest
+      run: docker push Amaan09/dappier-job-app-api:latest
