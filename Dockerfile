@@ -1,19 +1,22 @@
 # Use the official Node.js image as a base
 FROM node:18-alpine
 
-# Set the working directory
+# Set the working directory inside the container
 WORKDIR /app
 
-# Copy package.json and package-lock.json (or yarn.lock)
+# Copy the package.json and package-lock.json files to install dependencies
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install --production
+RUN npm install
+
+# Install Nest CLI globally to use 'nest' commands
+RUN npm install -g @nestjs/cli
 
 # Copy the rest of the application files
 COPY . .
 
-# Build the project (this will generate the dist folder)
+# Build the NestJS project (this will generate the dist folder)
 RUN npm run build
 
 # Expose the port the app will run on
