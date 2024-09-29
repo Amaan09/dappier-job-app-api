@@ -10,9 +10,4 @@ export class UserController {
     getAllUsers() {
         return this.userRepository.getAllUsers();
     }
-
-    @Post()
-    createUser(@Body() createUserRequest: CreateUserRequest) {
-        return this.userRepository.createUser(createUserRequest);
-    }
 }
