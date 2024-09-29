@@ -18,4 +18,4 @@ jobs:
     - name: Delete Old docker container
       run: sudo docker rm -f dappier-job-app-api-container || true
     - name: Run Docker Container
-      run: sudo docker run -d -p 8080:8080 -e MONGO_CONNECTION_STRING=${{ secrets.MONGO_CONNECTION_STRING }} --name dappier-job-app-api-container amaan1609/dappier-job-app-api
+      run: sudo docker run -e MONGO_CONNECTION_STRING=${{ secrets.MONGO_CONNECTION_STRING }} -d -p 8080:8080 --name dappier-job-app-api-container amaan1609/dappier-job-app-api
