@@ -6,4 +6,9 @@ export class AppController {
     getAllUsers() {
         return 'HI';
     }
+
+    @Get('test')
+    test() {
+        return 'HI';
+    }
 }
