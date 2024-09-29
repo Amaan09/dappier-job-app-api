@@ -8,7 +8,7 @@ import { UserModule } from './controllers/user/user.module';
   imports: [
     ConfigModule.forRoot(),
     MongooseModule.forRoot(databaseConfig().uri),
-    UserModule
+    UserModule // TEST
   ]
 })
 export class AppModule {}
