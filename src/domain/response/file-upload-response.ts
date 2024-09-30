@@ -1,5 +1,5 @@
 export class FileUploadResponse {
-    filename: string;
+    fileName: string;
 
     path: string;
 }

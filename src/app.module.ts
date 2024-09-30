@@ -8,6 +8,7 @@ import { AuthGuard } from './guards/auth/auth.guard';
 import { AuthModule } from './modules/auth.module';
 import jwtConfig from './config/jwt.config';
 import { JwtModule } from '@nestjs/jwt';
+import { ResumeModule } from './modules/resume.module';
 
 @Module({
   imports: [
@@ -15,7 +16,8 @@ import { JwtModule } from '@nestjs/jwt';
     MongooseModule.forRoot(databaseConfig().uri),
     JwtModule.register(jwtConfig()),
     UserModule,
-    AuthModule
+    AuthModule,
+    ResumeModule
   ],
   providers: [
     {
