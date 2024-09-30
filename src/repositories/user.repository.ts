@@ -13,7 +13,7 @@ export class UserRepository {
   }
 
   async getLoggedInUser(context: UserContext) {
-    return await this.model.find({ id: context.userId });
+    return await this.model.findById(context.userId).exec();
   }
 
   async getAllUsers(): Promise<UserDocument[]> {
