@@ -11,7 +11,7 @@ import { JwtModule } from '@nestjs/jwt';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({isGlobal: true}),
     MongooseModule.forRoot(databaseConfig().uri),
     JwtModule.register(jwtConfig()),
     UserModule,
