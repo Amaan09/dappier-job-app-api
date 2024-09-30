@@ -13,7 +13,6 @@ export class AwsS3Service {
     constructor(private configService: ConfigService) { }
 
     async uploadFile(filename: string, file: any): Promise<FileUploadResponse> {
-        console.log(s3ClientConfig())
         try {
             const parts = filename.split('.');
             const name = parts[0];
