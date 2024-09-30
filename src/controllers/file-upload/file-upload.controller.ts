@@ -7,7 +7,7 @@ export class FileUploadController {
 
     constructor(private s3Service: AwsS3Service) {}
 
-    @Post('/file')
+    @Post('file')
     @UseInterceptors(FileInterceptor('file'))
     async uploadFile(
         @UploadedFile(
