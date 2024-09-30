@@ -9,6 +9,7 @@ import { AuthModule } from './modules/auth.module';
 import jwtConfig from './config/jwt.config';
 import { JwtModule } from '@nestjs/jwt';
 import { ResumeModule } from './modules/resume.module';
+import { FileUploadModule } from './modules/file-upload.module';
 
 @Module({
   imports: [
@@ -17,7 +18,8 @@ import { ResumeModule } from './modules/resume.module';
     JwtModule.register(jwtConfig()),
     UserModule,
     AuthModule,
-    ResumeModule
+    ResumeModule,
+    FileUploadModule
   ],
   providers: [
     {
