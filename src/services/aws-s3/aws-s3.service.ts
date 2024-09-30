@@ -35,7 +35,7 @@ export class AwsS3Service {
             const response = await this._client.send(command);
             if (response.$metadata.httpStatusCode === 200) {
                 return {
-                    filename: key,
+                    fileName: key,
                     path: this.getFileUrl(key).url
                 };
             }
