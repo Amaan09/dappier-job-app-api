@@ -11,7 +11,7 @@ export class AuthController {
 
     @AllowAnonymous()
     @Post('signup')
-    singUp(@Body() request: SignupRequest) {
+    signup(@Body() request: SignupRequest) {
         return this.authService.signUp(request);
     }
 
