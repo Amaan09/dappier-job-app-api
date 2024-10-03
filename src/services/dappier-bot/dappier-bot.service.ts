@@ -3,6 +3,7 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { HmacService } from '../hmac/hmac.service';
 import { ChatCompletionRequest, ChatCompletionResponse, TrainModelRequest, TrainModelResponse } from 'src/domain';
+import { toCamelCase, toSnakeCase } from 'src/utils/case-converter';
 
 @Injectable()
 export class DappierBotService {
@@ -21,14 +22,15 @@ export class DappierBotService {
         const signature = this.hmacServie.createHMACSignature();
 
         try {
-            const response = await this.client.axiosRef.post<TrainModelResponse>(`${this.baseUrl}/resume/train_model`, request, {
+            const processedRequest = toSnakeCase(request);
+            const response = await this.client.axiosRef.post<TrainModelResponse>(`${this.baseUrl}/resume/train_model`, processedRequest, {
                 headers: {
                     'X-Signature': signature,
                     'Content-Type': 'application/json',
                 },
             });
 
-            return response.data;
+            return toCamelCase(response.data);
         } catch (error) {
             throw new HttpException(error.response?.data || 'Internal Server Error', error.response?.status || HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -38,14 +40,15 @@ export class DappierBotService {
         const signature = this.hmacServie.createHMACSignature();
 
         try {
-            const response = await this.client.axiosRef.post(`${this.baseUrl}/resume/chat_completion`, request, {
+            const processedRequest = toSnakeCase(request);
+            const response = await this.client.axiosRef.post(`${this.baseUrl}/resume/chat_completion`, processedRequest, {
                 headers: {
                     'X-Signature': signature,
                     'Content-Type': 'application/json',
                 },
             });
 
-            return response.data;
+            return toCamelCase(response.data);
         } catch (error) {
             throw new HttpException(error.response?.data || 'Internal Server Error', error.response?.status || HttpStatus.INTERNAL_SERVER_ERROR);
         }
