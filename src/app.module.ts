@@ -20,8 +20,7 @@ import { HttpModule } from '@nestjs/axios';
     UserModule,
     AuthModule,
     ResumeModule,
-    FileUploadModule,
-    HttpModule
+    FileUploadModule
   ],
   providers: [
     {
