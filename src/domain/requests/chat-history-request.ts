@@ -1,4 +1,4 @@
-export class ChatHistoryRequest {
+export class ChatHistory {
     userPrompt: string;
 
     aiPrompt: string;

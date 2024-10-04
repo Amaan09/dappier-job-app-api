@@ -1,11 +1,11 @@
-import { ChatHistoryRequest } from "./chat-history-request";
+import { ChatHistory } from "./chat-history-request";
 
 export class ChatCompletionRequest {
     userPrompt: string;
 
     namespaceId: string;
 
-    chatHistory: ChatHistoryRequest[];
+    chatHistory: ChatHistory[];
 
     searchQuery?: string;
 }
