@@ -2,20 +2,18 @@ name: Run Docker Container
 
 on:
   workflow_run:
-    workflows: ["Build Docker Image"]
+    workflows: ['Build Docker Image']
     types:
       - completed
 
 jobs:
-
   build:
-
     runs-on: self-hosted
 
     steps:
-    - name: Pull Docker image
-      run: sudo docker pull amaan1609/dappier-job-app-api:latest
-    - name: Delete Old docker container
-      run: sudo docker rm -f dappier-job-app-api-container || true
-    - name: Run Docker Container
-      run: sudo docker run -d -e MONGO_CONNECTION_STRING=$MONGO_CONNECTION_STRING -e JWT_SECRET=$JWT_SECRET -e S3_ACCESS_KEY=$S3_ACCESS_KEY -e S3_SECRET_ACCESS_KEY=$S3_SECRET_ACCESS_KEY -e S3_REGION=$S3_REGION -e S3_BUCKET_NAME=$S3_BUCKET_NAME -p 8080:8080 --name dappier-job-app-api-container amaan1609/dappier-job-app-api
+      - name: Pull Docker image
+        run: sudo docker pull amaan1609/dappier-job-app-api:latest
+      - name: Delete Old docker container
+        run: sudo docker rm -f dappier-job-app-api-container || true
+      - name: Run Docker Container
+        run: sudo docker run -d -e MONGO_CONNECTION_STRING=$MONGO_CONNECTION_STRING -e JWT_SECRET=$JWT_SECRET -e S3_ACCESS_KEY=$S3_ACCESS_KEY -e S3_SECRET_ACCESS_KEY=$S3_SECRET_ACCESS_KEY -e S3_REGION=$S3_REGION -e S3_BUCKET_NAME=$S3_BUCKET_NAME -e DAPPIER_BOT_BASE_URL=$DAPPIER_BOT_BASE_URL -e DAPPIER_BOT_API_SECRET=$DAPPIER_BOT_API_SECRET -p 8080:8080 --name dappier-job-app-api-container amaan1609/dappier-job-app-api
