@@ -1,9 +1,9 @@
 export class CreateResumeRequest {
-    fileName: string;
+    nickName: string;
 
+    fileName: string;
 
     fileUrl: string;
 
-
-    jobDescription?: string;
+    jobDescription: string;
 }
