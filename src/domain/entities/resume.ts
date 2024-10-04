@@ -6,6 +6,12 @@ export type ResumeDocument = HydratedDocument<Resume>;
 
 @Schema({ collection: 'Resume', versionKey: false })
 export class Resume {
+  @Prop({default: now()})
+  dateCreated: Date;
+
+  @Prop({default: now()})
+  dateUpdated: Date;
+
   @Prop({ required: true, unique: true })
   fileName: string;
 
@@ -23,12 +29,6 @@ export class Resume {
 
   @Prop()
   nickName: string;
-
-  @Prop({default: now()})
-  dateCreated: Date;
-
-  @Prop({default: now()})
-  dateUpdated: Date;
 }
 
 export const ResumeSchema = SchemaFactory.createForClass(Resume);

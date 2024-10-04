@@ -5,6 +5,12 @@ export type UserDocument = HydratedDocument<User>;
 
 @Schema({ collection: 'User', versionKey: false })
 export class User {
+  @Prop({default: now()})
+  dateCreated: Date;
+
+  @Prop({default: now()})
+  dateUpdated: Date;
+  
   @Prop({ required: true, unique: true })
   email: string;
 
@@ -13,12 +19,6 @@ export class User {
 
   @Prop()
   name: string;
-
-  @Prop({default: now()})
-  dateCreated: Date;
-
-  @Prop({default: now()})
-  dateUpdated: Date;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

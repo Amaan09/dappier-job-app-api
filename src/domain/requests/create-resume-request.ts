@@ -6,4 +6,6 @@ export class CreateResumeRequest {
     fileUrl: string;
 
     jobDescription: string;
+
+    namespaceId: string;
 }

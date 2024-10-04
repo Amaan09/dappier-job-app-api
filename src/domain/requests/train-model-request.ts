@@ -1,7 +1,7 @@
 export class TrainModelRequest {
     userEmail: string;
 
-    resumeId: string;
+    referenceId: string;
 
     resumeFilepath: string;
 
