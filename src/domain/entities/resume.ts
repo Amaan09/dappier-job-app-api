@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument, Types } from 'mongoose';
+import { HydratedDocument, Types, now } from 'mongoose';
 import { User } from './user';
 
 export type ResumeDocument = HydratedDocument<Resume>;
@@ -12,11 +12,23 @@ export class Resume {
   @Prop({ required: true, unique: true })
   fileUrl: string;
 
+  @Prop({ required: true, unique: true })
+  namespaceId: string;
+
   @Prop({ type: Types.ObjectId, required: true, ref: 'User' })
   userId: Types.ObjectId | User;
 
   @Prop()
   jobDescription: string;
+
+  @Prop()
+  nickName: string;
+
+  @Prop({default: now()})
+  dateCreated: Date;
+
+  @Prop({default: now()})
+  dateUpdated: Date;
 }
 
 export const ResumeSchema = SchemaFactory.createForClass(Resume);

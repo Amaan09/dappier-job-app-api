@@ -1,5 +1,5 @@
 export class TrainModelResponse {
-    status: string;
+    status: "success" | "failure";;
 
     namespaceId: string;
 }
