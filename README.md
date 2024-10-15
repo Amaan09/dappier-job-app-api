@@ -1,30 +1,28 @@
 # Dappier Job Application API
 
 ## Overview
-
-The Dappier Job Application API is a RESTful service built using NestJS, designed to power the Dappier job application system. It enables users to upload resumes and job descriptions, which are then processed by an integrated RAG (Retrieve and Generate) model to provide actionable feedback and generate interview questions. The API is configured to securely interact with a Flask backend hosting the RAG model and utilizes AWS S3 and MongoDB for data storage solutions.
+The Dappier Job Application API is a RESTful service built using NestJS, designed to power the Dappier job application system. It enables users to upload resumes and job descriptions, which are then processed by an integrated RAG (Retrieve and Generate) model to provide actionable feedback and generate interview questions. The API is configured to securely interact with a Flask backend hosting the RAG model and utilizes AWS S3 and MongoDB for data storage solutions. The CI/CD pipeline incorporates modern best practices to ensure robust deployment and integration processes.
 
 ## Features
+- **Cloud-Based Storage**: The system leverages AWS S3 for efficient resume and job description file storage.
+- **Robust Authentication**: Implements JWT-based authentication for secure login and signup processes, ensuring user-wise authorization. Passwords are securely hashed before database storage.
+- **Comprehensive API Architecture**: The NestJS project is structured with clearly defined modules, controllers, services, repositories, and domain entities for optimal performance and scalability.
+- **User Management**: Features comprehensive user management through a dedicated User module, which includes a repository and controller. Has facilities for user sign-up and login, enhanced by password hashing, and utilizes a UserContext decorator for extracting user information from authentication tokens.
+- **Flexible File Handling**: Incorporates a File Upload module and Resume module to manage and control file uploads and resume-specific operations, respectively. Resumes and user entities are timestamped with creation and update dates.
+- **Server-Side Communication & Authentication**: Employs HMAC signatures for secure server-to-server communication between the NestJS backend and the Flask AI model backend.
+- **AI-Powered Feedback & Question Generation**: Deploys endpoints for chat completion and resume training, interacting with a Flask-hosted AI model. The API provides dynamically generated feedback and interview questions based on uploaded data.
+- **Content Transformation Utilities**: Includes utilities for converting object notation from snake_case to camelCase and vice versa to maintain consistency across different system components.
+- **Continuous AI Model Training**: The API supports resume training with the AI model, storing only successful training outcomes in the database while providing user notifications for failed training attempts, prompting re-uploads.
 
-- **Cloud-Based Storage:** The system leverages AWS S3 for efficient resume and job description file storage.
-  
-- **Robust Authentication:** Implements JWT-based authentication for secure login and signup processes, ensuring user-wise authorization. Passwords are securely hashed before database storage.
+## CI/CD Features
+- **Automated Deployment**: Utilizes Docker for containerization of the NestJS application, ensuring consistent and isolated production environments.
+- **Continuous Integration and Delivery**: Configures GitHub Actions to build and push Docker images to a DockerHub repository upon code push to the `main` branch.
+- **Infrastructure Automation**: Launches an EC2 instance configured with a self-hosted GitHub action runner, automating the deployment of the updated Docker image upon push.
+- **Secure Service Configuration**: Installs and configures Docker Engine and Nginx on the EC2 instance, ensuring efficient application deployment and management.
+- **Frontend Deployment**: Uses Vercel for the CI/CD of the associated React application by integrating with the GitHub repository.
+- **Domain Management**: Install an SSL certificate on the Nginx server on EC2 to provide HTTPS connectivity for [https://amrul.in](https://amrul.in).
 
-- **Comprehensive API Architecture:** The NestJS project is structured with clearly defined modules, controllers, services, repositories, and domain entities for optimal performance and scalability.
-
-- **User Management:** Features comprehensive user management through a dedicated User module, which includes a repository and controller. Has facilities for user sign-up and login, enhanced by password hashing, and utilizes a UserContext decorator for extracting user information from authentication tokens.
-
-- **Flexible File Handling:** Incorporates a File Upload module and Resume module to manage and control file uploads and resume-specific operations, respectively. Resumes and user entities are timestamped with creation and update dates.
-
-- **Server-Side Communication & Authentication:** Employs HMAC signatures for secure server-to-server communication between the NestJS backend and the Flask AI model backend.
-
-- **AI-Powered Feedback & Question Generation:** Deploys endpoints for chat completion and resume training, interacting with a Flask-hosted AI model. The API provides dynamically generated feedback and interview questions based on uploaded data.
-
-- **Content Transformation Utilities:** Includes utilities for converting object notation from snake_case to camelCase and vice versa to maintain consistency across different system components.
-
-- **Continuous AI Model Training:** The API supports resume training with the AI model, storing only successful training outcomes in the database while providing user notifications for failed training attempts, prompting re-uploads.
-
-This comprehensive suite of features not only streamlines the job application process but also enhances user interactions through intelligent feedback generation and secure data management practices.
+This comprehensive suite of features not only streamlines the job application process but also enhances user interactions through intelligent feedback generation, secure data management practices, and efficient CI/CD workflows.
 
 ## Project Structure
 
