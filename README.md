@@ -2,14 +2,29 @@
 
 ## Overview
 
-The Dappier Job Application API is a RESTful API built using NestJS that allows users to upload their resumes and job descriptions. It utilizes a RAG (Retrieve and Generate) model to provide feedback or generate questions about the uploaded content. This API serves as the backend for the Dappier job application system. It interacts with a RAG model flask backend.
+The Dappier Job Application API is a RESTful service built using NestJS, designed to power the Dappier job application system. It enables users to upload resumes and job descriptions, which are then processed by an integrated RAG (Retrieve and Generate) model to provide actionable feedback and generate interview questions. The API is configured to securely interact with a Flask backend hosting the RAG model and utilizes AWS S3 and MongoDB for data storage solutions.
 
 ## Features
 
-- **Resume and Job Description Upload:** Users can upload resumes and job descriptions via the API.
-- **Feedback Generation:** The RAG model processes the uploaded data to generate feedback and potential interview questions.
-- **Secure Data Handling:** Utilizes AWS S3 for file storage and MongoDB for structured data storage.
-- **JWT Authentication:** Protects endpoints using JSON Web Tokens for secure user authentication.
+- **Cloud-Based Storage:** The system leverages AWS S3 for efficient resume and job description file storage.
+  
+- **Robust Authentication:** Implements JWT-based authentication for secure login and signup processes, ensuring user-wise authorization. Passwords are securely hashed before database storage.
+
+- **Comprehensive API Architecture:** The NestJS project is structured with clearly defined modules, controllers, services, repositories, and domain entities for optimal performance and scalability.
+
+- **User Management:** Features comprehensive user management through a dedicated User module, which includes a repository and controller. Has facilities for user sign-up and login, enhanced by password hashing, and utilizes a UserContext decorator for extracting user information from authentication tokens.
+
+- **Flexible File Handling:** Incorporates a File Upload module and Resume module to manage and control file uploads and resume-specific operations, respectively. Resumes and user entities are timestamped with creation and update dates.
+
+- **Server-Side Communication & Authentication:** Employs HMAC signatures for secure server-to-server communication between the NestJS backend and the Flask AI model backend.
+
+- **AI-Powered Feedback & Question Generation:** Deploys endpoints for chat completion and resume training, interacting with a Flask-hosted AI model. The API provides dynamically generated feedback and interview questions based on uploaded data.
+
+- **Content Transformation Utilities:** Includes utilities for converting object notation from snake_case to camelCase and vice versa to maintain consistency across different system components.
+
+- **Continuous AI Model Training:** The API supports resume training with the AI model, storing only successful training outcomes in the database while providing user notifications for failed training attempts, prompting re-uploads.
+
+This comprehensive suite of features not only streamlines the job application process but also enhances user interactions through intelligent feedback generation and secure data management practices.
 
 ## Project Structure
 
