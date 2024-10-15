@@ -181,4 +181,3 @@ Ensure you have the following software installed:
 --- 
 
 This project is part of a larger system including the [Dappier Job Application Bot](https://github.com/Amaan09/dappier-job-app-bot) for RAG model processing and the [Dappier Job Application UI](https://github.com/Amaan09/dappier-job-app-ui) as the frontend interface.
-```
