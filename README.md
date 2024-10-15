@@ -1,5 +1,17 @@
 # Dappier Job Application API
 
+Welcome to the Dappier Job Application API repository. This repository contains the backend services designed to enhance the job application process by managing and processing uploads of resumes and job descriptions. It integrates with a RAG (Retrieval-Augmented Generation) model to deliver insightful feedback and generate potential interview questions. Our objective is to ensure seamless and user-friendly communication between the frontend UI and the RAG model through our robust API solutions.
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Features](#features)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Usage](#usage)
+
 ## Overview
 The Dappier Job Application API is a RESTful service built using NestJS, designed to power the Dappier job application system. It enables users to upload resumes and job descriptions, which are then processed by an integrated RAG (Retrieve and Generate) model to provide actionable feedback and generate interview questions. The API is configured to securely interact with a Flask backend hosting the RAG model and utilizes AWS S3 and MongoDB for data storage solutions. The CI/CD pipeline incorporates modern best practices to ensure robust deployment and integration processes.
 
